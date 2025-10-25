@@ -29,11 +29,14 @@ loom {
     mods {
         register("farting") {
             sourceSet("main")
-            sourceSet("client")
         }
     }
-}
 
+    mixin {
+        defaultRefmapName = "mixins.farting.refmap.json"
+        add("main", "mixins.farting.refmap.json")
+    }
+}
 
 repositories {
     maven {

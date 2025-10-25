@@ -17,7 +17,7 @@ class Farting : ModInitializer {
         var CONFIG = ConfigApi.registerAndLoadConfig(::FartingConfig, RegisterType.SERVER)
 
         @JvmStatic
-        val LOGGER: Logger = LoggerFactory.getLogger("Geep Craft")
+        val LOGGER: Logger = LoggerFactory.getLogger("Farting")
 
         fun id(path: String): Identifier {
             return Identifier.of(MOD_ID, path)

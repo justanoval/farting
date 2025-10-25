@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.justanoval.farting.mixin",
   "compatibilityLevel": "JAVA_21",
+  "refmap": "mixins.farting.refmap.json",
   "mixins": [
     "SneakDetectMixin"
   ],
