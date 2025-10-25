@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "farting",
+  "version": "${version}",
+  "name": "Farting",
+  "description": "Players occasionally fart when crouching.",
+  "authors": [
+    "justan oval"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/farting",
+    "sources": "https://github.com/justanoval/farting",
+    "issues": "https://github.com/justanoval/farting/issues"
+  },
+  "license": "MPL-2.0",
+  "icon": "assets/farting/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "com.justanoval.farting.Farting"
+    ]
+  },
+  "mixins": [
+    "farting.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-language-kotlin": ">=${kotlin_loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "fzzy_config": ">=${fzzy_version}"
+  }
+}
