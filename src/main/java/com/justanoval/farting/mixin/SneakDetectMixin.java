@@ -28,15 +28,13 @@ public abstract class SneakDetectMixin {
     @Shadow
     private Vec3d pos;
 
-    @Inject(method = "setSneaking", at = @At("HEAD"))
-    public void onSneakStart(boolean sneaking, CallbackInfo ci) {
+    @Inject(method = "setSneaking(Z)V", at = @At("HEAD"))
+    public void farting$onSneakStart(boolean sneaking, CallbackInfo ci) {
         Entity entity = ((Entity)((Object) this));
         if (entity instanceof ServerPlayerEntity && sneaking && !entity.isSpectator()) {
             float fartChance = Farting.getCONFIG().getFartChance();
-            float v = random.nextFloat();
-            Farting.getLOGGER().info("{}", v);
-            if (v <= fartChance) {
-                world.playSound(null, pos.x, pos.y, pos.z, FartingSoundEvents.INSTANCE.getFART(), SoundCategory.PLAYERS, 1.0f, 1.0f);
+            if (random.nextFloat() <= fartChance) {
+                world.playSound(null, pos.x, pos.y, pos.z, FartingSoundEvents.getFART(), SoundCategory.PLAYERS, 1.0f, 1.0f);
 
                 if (Farting.getCONFIG().getTriggersSculkSensor()) {
                     world.emitGameEvent(entity, GameEvent.NOTE_BLOCK_PLAY, pos);
