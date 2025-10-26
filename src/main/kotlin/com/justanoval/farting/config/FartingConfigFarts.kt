@@ -4,19 +4,18 @@ import com.justanoval.farting.Farting
 import me.fzzyhmstrs.fzzy_config.annotations.Comment
 import me.fzzyhmstrs.fzzy_config.config.Config
 import me.fzzyhmstrs.fzzy_config.util.Walkable
-import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedList
+import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedStringMap
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedAny
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedColor
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedPair
+import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedString
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat
-import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt
 
-class FartingConfig: Config(Farting.id("config")) {
+class FartingConfigFarts: Config(Farting.id("farts")) {
     companion object {
         val NORMAL_FART = Fart()
 
         val BIG_FART = Fart(
-            weight = ValidatedInt(1),
             sound = ValidatedAny(
                 Sound(
                     "farting:player.big_fart"
@@ -40,18 +39,17 @@ class FartingConfig: Config(Farting.id("config")) {
         )
     }
 
-    @Comment("The chance for the fart to happen when a player crouches. Between 0 and 1, 0 being never and 1 being always.")
-    var fartChance: Float = 0.001f
-
-    @Comment("Whether the fart sound is picked up by a sculk sensor.")
-    var enableFartTriggersSculkSensor: Boolean = true
-
-    var farts: ValidatedList<Fart> = ValidatedAny<Fart>(Fart())
-        .toList(NORMAL_FART, BIG_FART)
+    var farts: ValidatedStringMap<Fart> = ValidatedStringMap.Builder<Fart>()
+        .keyHandler(ValidatedString(""))
+        .valueHandler(ValidatedAny(Fart()))
+        .defaults(mapOf(
+            "normal_fart" to NORMAL_FART,
+            "big_fart" to BIG_FART
+        ))
+        .build()
 
     class Fart(
         @Comment("Leave this at 0 if you don't want it to happen naturally.")
-        var weight: ValidatedInt = ValidatedInt(10, 100, 0),
         var sound: ValidatedAny<Sound> = ValidatedAny(Sound("farting:player.normal_fart")),
         var particle: ValidatedAny<Particle> = ValidatedAny(Particle()),
         var velocity: ValidatedAny<Velocity> = ValidatedAny(Velocity())

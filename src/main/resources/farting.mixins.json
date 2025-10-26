@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "mixins.farting.refmap.json",
   "mixins": [
+    "LivingEntityMixin",
     "SneakDetectMixin"
   ],
   "injectors": {
