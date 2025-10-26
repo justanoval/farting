@@ -1,17 +1,18 @@
 {
-  "player.fart": {
+  "player.normal_fart": {
     "sounds": [
       {
-        "name": "farting:player/fart-1",
-        "weight": 5
+        "name": "farting:player/fart-1"
+      }
+    ]
+  },
+  "player.big_fart": {
+    "sounds": [
+      {
+        "name": "farting:player/fart-3"
       },
       {
-        "name": "farting:player/fart-2",
-        "weight": 1
-      },
-      {
-        "name": "farting:player/fart-3",
-        "weight": 1
+        "name": "farting:player/fart-2"
       }
     ]
   }
