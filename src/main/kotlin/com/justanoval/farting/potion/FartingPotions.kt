@@ -1,7 +1,7 @@
 package com.justanoval.farting.potion
 
 import com.justanoval.farting.Farting
-import com.justanoval.farting.effects.FartingEffects
+import com.justanoval.farting.entity.effect.FartingStatusEffects
 import eu.pb4.polymer.core.api.other.SimplePolymerPotion
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -19,7 +19,7 @@ object FartingPotions {
         "flatulence",
         "flatulence",
         StatusEffectInstance(
-            FartingEffects.GASSY,
+            FartingStatusEffects.GASSY,
             3600,
             0
         )
@@ -29,7 +29,7 @@ object FartingPotions {
         "long_flatulence",
         "flatulence",
         StatusEffectInstance(
-            FartingEffects.GASSY,
+            FartingStatusEffects.GASSY,
             9600,
             0
         )
@@ -39,7 +39,7 @@ object FartingPotions {
         "strong_flatulence",
         "flatulence",
         StatusEffectInstance(
-            FartingEffects.GASSY,
+            FartingStatusEffects.GASSY,
             1800,
             1
         )
@@ -49,7 +49,7 @@ object FartingPotions {
         "cramping",
         "cramping",
         StatusEffectInstance(
-            FartingEffects.CRAMPING,
+            FartingStatusEffects.CRAMPING,
             3600,
             0
         )
@@ -59,7 +59,7 @@ object FartingPotions {
         "long_cramping",
         "cramping",
         StatusEffectInstance(
-            FartingEffects.CRAMPING,
+            FartingStatusEffects.CRAMPING,
             9600,
             0
         )
@@ -69,7 +69,7 @@ object FartingPotions {
         "strong_cramping",
         "cramping",
         StatusEffectInstance(
-            FartingEffects.CRAMPING,
+            FartingStatusEffects.CRAMPING,
             1800,
             1
         )
@@ -79,14 +79,74 @@ object FartingPotions {
         "laxation",
         "laxation",
         StatusEffectInstance(
-            FartingEffects.CRAMPING,
+            FartingStatusEffects.CRAMPING,
             1800,
             2
         ),
         StatusEffectInstance(
-            FartingEffects.GASSY,
+            FartingStatusEffects.GASSY,
             1800,
             3
+        )
+    )
+
+    val INDIGESTION: RegistryEntry<Potion> = register(
+        "indigestion",
+        "indigestion",
+        StatusEffectInstance(
+            FartingStatusEffects.INDIGESTION,
+            3600,
+            0
+        )
+    )
+
+    val LONG_INDIGESTION: RegistryEntry<Potion> = register(
+        "long_indigestion",
+        "indigestion",
+        StatusEffectInstance(
+            FartingStatusEffects.INDIGESTION,
+            9600,
+            0
+        )
+    )
+
+    val STRONG_INDIGESTION: RegistryEntry<Potion> = register(
+        "strong_indigestion",
+        "indigestion",
+        StatusEffectInstance(
+            FartingStatusEffects.INDIGESTION,
+            1800,
+            1
+        )
+    )
+
+    val INCONTINENCE: RegistryEntry<Potion> = register(
+        "incontinence",
+        "incontinence",
+        StatusEffectInstance(
+            FartingStatusEffects.INCONTINENCE,
+            3600,
+            0
+        )
+    )
+
+    val LONG_INCONTINENCE: RegistryEntry<Potion> = register(
+        "long_incontinence",
+        "incontinence",
+        StatusEffectInstance(
+            FartingStatusEffects.INCONTINENCE,
+            9600,
+            0
+        )
+    )
+
+    val STRONG_INCONTINENCE: RegistryEntry<Potion> = register(
+        "strong_incontinence",
+        "incontinence",
+        StatusEffectInstance(
+            FartingStatusEffects.INCONTINENCE,
+            1800,
+            1
         )
     )
 
@@ -108,13 +168,28 @@ object FartingPotions {
 
     fun init() {
         FabricBrewingRecipeRegistryBuilder.BUILD.register(FabricBrewingRecipeRegistryBuilder.BuildCallback { builder: BrewingRecipeRegistry.Builder ->
+            // flatulence
             builder.registerRecipe(Potions.AWKWARD, Items.BEETROOT, FLATULENCE.value())
             builder.registerRecipe(FLATULENCE, Items.REDSTONE, LONG_FLATULENCE.value())
             builder.registerRecipe(FLATULENCE, Items.GLOWSTONE_DUST, STRONG_FLATULENCE.value())
+
+            // cramping
             builder.registerRecipe(Potions.AWKWARD, Items.MILK_BUCKET, CRAMPING.value())
             builder.registerRecipe(CRAMPING, Items.REDSTONE, LONG_CRAMPING.value())
             builder.registerRecipe(CRAMPING, Items.GLOWSTONE_DUST, STRONG_CRAMPING.value())
+
+            // laxation
             builder.registerRecipe(Potions.AWKWARD, Items.SUSPICIOUS_STEW, LAXATION.value())
+
+            // indigestion
+            builder.registerRecipe(Potions.AWKWARD, Items.CHICKEN, INDIGESTION.value())
+            builder.registerRecipe(INDIGESTION, Items.REDSTONE, LONG_INDIGESTION.value())
+            builder.registerRecipe(INDIGESTION, Items.GLOWSTONE_DUST, STRONG_INDIGESTION.value())
+
+            // incontinence
+            builder.registerRecipe(Potions.AWKWARD, Items.POISONOUS_POTATO, INCONTINENCE.value())
+            builder.registerRecipe(INCONTINENCE, Items.REDSTONE, LONG_INCONTINENCE.value())
+            builder.registerRecipe(INCONTINENCE, Items.GLOWSTONE_DUST, STRONG_INCONTINENCE.value())
         })
     }
 }

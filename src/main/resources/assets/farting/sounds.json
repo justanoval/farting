@@ -15,5 +15,10 @@
         "name": "farting:player/fart-2"
       }
     ]
+  },
+  "player.super_fart": {
+    "sounds": [
+      "farting:player/super_fart"
+    ]
   }
 }

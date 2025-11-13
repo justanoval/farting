@@ -1,20 +1,37 @@
 {
   "attribute.name.gassiness": "Gassiness",
   "attribute.name.fart_strength": "Fart Strength",
+
   "effect.farting.stinky": "Stinky",
   "effect.farting.gassy": "Gassy",
   "effect.farting.cramping": "Cramping",
+  "effect.farting.indigestion": "Indigestive",
+  "effect.farting.incontinence": "Incontinent",
 
   "item.minecraft.potion.effect.flatulence": "Potion of Flatulence",
   "item.minecraft.splash_potion.effect.flatulence": "Splash Potion of Flatulence",
   "item.minecraft.lingering_potion.effect.flatulence": "Lingering Potion of Flatulence",
   "item.minecraft.tipped_arrow.effect.flatulence": "Arrow of Flatulence",
+
   "item.minecraft.potion.effect.cramping": "Potion of Cramping",
   "item.minecraft.splash_potion.effect.cramping": "Splash Potion of Cramping",
   "item.minecraft.lingering_potion.effect.cramping": "Lingering Potion of Cramping",
   "item.minecraft.tipped_arrow.effect.cramping": "Arrow of Cramping",
+
   "item.minecraft.potion.effect.laxation": "Potion of Laxation",
   "item.minecraft.splash_potion.effect.laxation": "Splash Potion of Laxation",
   "item.minecraft.lingering_potion.effect.laxation": "Lingering Potion of Laxation",
-  "item.minecraft.tipped_arrow.effect.laxation": "Arrow of Laxation"
+  "item.minecraft.tipped_arrow.effect.laxation": "Arrow of Laxation",
+
+  "item.minecraft.potion.effect.indigestion": "Potion of Indigestion",
+  "item.minecraft.splash_potion.effect.indigestion": "Splash Potion of Indigestion",
+  "item.minecraft.lingering_potion.effect.indigestion": "Lingering Potion of Indigestion",
+  "item.minecraft.tipped_arrow.effect.indigestion": "Arrow of Indigestion",
+
+  "item.minecraft.potion.effect.incontinence": "Potion of Incontinence",
+  "item.minecraft.splash_potion.effect.incontinence": "Splash Potion of Incontinence",
+  "item.minecraft.lingering_potion.effect.incontinence": "Lingering Potion of Incontinence",
+  "item.minecraft.tipped_arrow.effect.incontinence": "Arrow of Incontinence",
+
+  "death.attack.deadly_fart": "%s was farted on to death by %s."
 }

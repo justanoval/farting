@@ -1,7 +1,7 @@
 package com.justanoval.farting.mixin;
 
 import com.justanoval.farting.attribute.FartingAttributes;
-import com.justanoval.farting.effects.FoodEffectHandler;
+import com.justanoval.farting.entity.effect.FoodEffectHandler;
 import net.minecraft.entity.Attackable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -38,6 +38,8 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Se
     private static void farting$addAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
         cir.getReturnValue().add(FartingAttributes.getGASSINESS());
         cir.getReturnValue().add(FartingAttributes.getFART_STRENGTH());
+        cir.getReturnValue().add(FartingAttributes.getFART_DAMAGE_MULTIPLIER());
+        cir.getReturnValue().add(FartingAttributes.getFART_RANGE_MULTIPLIER());
     }
 
     @Inject(method = "consumeItem", at = @At("TAIL"))

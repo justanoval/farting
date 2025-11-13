@@ -1,6 +1,6 @@
 package com.justanoval.farting.mixin;
 
-import com.justanoval.farting.fart.FartHandler;
+import com.justanoval.farting.FartHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Debug;
@@ -15,7 +15,7 @@ public abstract class SneakDetectMixin {
     @Inject(method = "setSneaking(Z)V", at = @At("HEAD"))
     public void farting$onSneakStart(boolean sneaking, CallbackInfo ci) {
         Entity entity = ((Entity)((Object) this));
-        if (entity instanceof ServerPlayerEntity && sneaking && !entity.isSpectator()) {
+        if (entity instanceof ServerPlayerEntity && sneaking && !entity.isSpectator() && !entity.isSneaking()) {
             FartHandler.tryFart(((ServerPlayerEntity) entity));
         }
     }

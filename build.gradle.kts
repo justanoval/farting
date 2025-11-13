@@ -3,7 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.2.21"
-    id("fabric-loom") version "1.11-SNAPSHOT"
+    kotlin("plugin.serialization") version "2.2.21"
+    id("fabric-loom") version "1.12-SNAPSHOT"
     id("maven-publish")
 }
 
@@ -39,13 +40,11 @@ loom {
 }
 
 repositories {
-    maven {
-        url = uri("https://maven.nucleoid.xyz")
-    }
+    mavenLocal()
+    mavenCentral()
 
     maven {
-        name = "FzzyMaven"
-        url = uri("https://maven.fzzyhmstrs.me/")
+        url = uri("https://maven.nucleoid.xyz")
     }
 }
 
@@ -58,10 +57,12 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
+    // My dependencies
+    modImplementation("com.justanoval:oval:${project.property("oval_version")}")
+
     // Mod dependencies
     modImplementation("eu.pb4:polymer-core:${project.property("polymer_version")}")
     modImplementation("eu.pb4:polymer-resource-pack:${project.property("polymer_version")}")
-    modImplementation("me.fzzyhmstrs:fzzy_config:${project.property("fzzy_version")}")
 }
 
 tasks.processResources {
@@ -69,7 +70,6 @@ tasks.processResources {
     inputs.property("minecraft_version", project.property("minecraft_version"))
     inputs.property("loader_version", project.property("loader_version"))
     inputs.property("polymer_version", project.property("polymer_version"))
-    inputs.property("fzzy_version", project.property("fzzy_version"))
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
@@ -79,7 +79,6 @@ tasks.processResources {
             "loader_version" to project.property("loader_version"),
             "kotlin_loader_version" to project.property("kotlin_loader_version"),
             "polymer_version" to project.property("polymer_version"),
-            "fzzy_version" to project.property("fzzy_version")
         )
     }
 }

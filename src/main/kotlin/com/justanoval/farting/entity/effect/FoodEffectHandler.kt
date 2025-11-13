@@ -1,4 +1,4 @@
-package com.justanoval.farting.effects
+package com.justanoval.farting.entity.effect
 
 import com.justanoval.farting.Farting
 import net.minecraft.entity.LivingEntity
@@ -8,16 +8,15 @@ import net.minecraft.registry.Registries
 
 object FoodEffectHandler {
     fun tryApplyFoodEffect(entity: LivingEntity, itemStack: ItemStack) {
-        Farting.LOGGER.info("tryApplyFoodEffect")
-        Farting.CONFIG.gassyFood.gassyFoods.get().forEach { (id, strength) ->
+        Farting.CONFIG.gassyFoods.forEach { (id, effect) ->
             val item = Registries.ITEM.get(id)
-            Farting.LOGGER.info("item $item ?= item ${itemStack.item}")
             if (item == itemStack.item) {
                 val instance = StatusEffectInstance(
-                    FartingEffects.GASSY,
-                    20 * Farting.CONFIG.gassyFood.length,
-                    strength,
-                    false, true, true)
+                    FartingStatusEffects.GASSY,
+                    20 * effect.length,
+                    effect.amplifier,
+                    false, true, true
+                )
 
                 entity.addStatusEffect(instance)
             }
